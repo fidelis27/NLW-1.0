@@ -8,6 +8,18 @@ import api from '../../services/api';
 import './styles.css';
 
 import logo from '../../assets/logo.svg';
+import { Error } from './styles';
+
+interface Data {
+    name: string;
+    email: string;
+    whatsapp: string;
+    uf: string;
+    city: string;
+    latitude: number;
+    longitude:number;
+    items:number[];
+  }
 
 interface Item {
   id: number;
@@ -22,6 +34,7 @@ interface IBGECityResponse {
 }
 
 const CreatePoint: React.FC = () => {
+  const [inputError, setInputError] = useState<string>('');
   const [itens, setItens] = useState<Item[]>([]);
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
@@ -117,6 +130,36 @@ const CreatePoint: React.FC = () => {
       setSelectedItems([...selectedItems, id]);
     }
   }
+  function ValidateData(data: Data) : boolean{
+    if (!data.name) {
+      setInputError('Digite o seu nome!');
+      return false
+
+    }
+     if(!data.email) {
+      setInputError( 'Digite o seu email');
+      return false
+    }
+    if(!data.whatsapp) {
+      setInputError( 'Digite o seu whatsapp');
+      return false
+    }
+    if(data.uf === '0') {
+      setInputError( 'Selecione seu estado');
+      return false
+    }
+    if(data.city === '0') {
+      setInputError( 'Selecione sua cidade');
+      return false
+    }
+    if(data.items.length === 0) {
+      setInputError( 'Selecione pelo menos um resíduo');
+      return false
+    }
+
+     return true
+
+  }
 
   async function handleSubmit(event: FormEvent): Promise<void> {
     event.preventDefault();
@@ -137,9 +180,15 @@ const CreatePoint: React.FC = () => {
       longitude,
       items:selectedItens,
     };
+
+    if(ValidateData(data)){
+      setInputError('');
+
     await api.post('points', data);
-    history.push("/")
-    alert('ponto de coleta criado');
+    history.push("/create-point-success")
+    }
+
+
   }
 
   return (
@@ -152,10 +201,11 @@ const CreatePoint: React.FC = () => {
           Voltar para home
         </Link>
       </header>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <h1>
-          Cadastro do <br /> ponto de coleta
+          Cadastro do ponto de coleta
         </h1>
+        {inputError && <Error>{inputError}</Error>}
         <fieldset>
           <legend>
             <h2>Dados</h2>
@@ -258,6 +308,7 @@ const CreatePoint: React.FC = () => {
             ))}
           </ul>
         </fieldset>
+
         <button type="submit">Cadastrar ponto de coleta</button>
       </form>
     </div>

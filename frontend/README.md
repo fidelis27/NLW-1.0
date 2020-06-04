@@ -1,3 +1,17 @@
+## ECOLETA
+Como forma de apreendizado fiz a validação dos campos do formulário e também uma tela de confirmação do cadastro do ponto de coleta.
+
+## Telas da aplicação.
+# Tela inicial.
+![tela01](https://user-images.githubusercontent.com/45233696/83797219-ad2e4b00-a678-11ea-9156-4c6e7ef7d03c.png)
+# Tela do formulário de cadastro
+![tela02](https://user-images.githubusercontent.com/45233696/83797221-ae5f7800-a678-11ea-8d26-6b91e3908f20.png)
+# Tela do formulário de cadastro
+![tela022](https://user-images.githubusercontent.com/45233696/83797222-aef80e80-a678-11ea-96ae-78ad9a0ed514.png)
+# Tela confirmação de cadastro
+![tela 03](https://user-images.githubusercontent.com/45233696/83797223-aef80e80-a678-11ea-819f-0be216bc84a1.png)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

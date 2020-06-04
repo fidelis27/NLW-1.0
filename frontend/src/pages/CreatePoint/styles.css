@@ -6,7 +6,7 @@
 }
 
 #page-create-point header {
-  margin-top: 48px;
+  margin-top: 28px;
 
   display: flex;
   justify-content: space-between;
@@ -28,8 +28,8 @@
 }
 
 #page-create-point form {
-  margin: 80px auto;
-  padding: 64px;
+  margin: 60px auto;
+  padding: 34px;
   max-width: 730px;
   background: #FFF;
   border-radius: 8px;
@@ -43,7 +43,7 @@
 }
 
 #page-create-point form fieldset {
-  margin-top: 64px;
+  margin-top: 44px;
   min-inline-size: auto;
   border: 0;
 }

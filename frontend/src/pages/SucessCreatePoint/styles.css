@@ -1,0 +1,21 @@
+
+.container-success {
+  background: black;
+  margin: 0 auto 0 ;
+  padding-top: 180px;
+  height: 100vh;
+  width:100vw;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.container-success svg {
+  background: black;
+  border-radius: 50%;
+  color: #2FB86E;
+}
+
+.container-success h1 {
+  color: white
+}
