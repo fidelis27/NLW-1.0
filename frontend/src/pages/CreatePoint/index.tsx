@@ -1,6 +1,6 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent  } from 'react';
-import { Link, useHistory} from 'react-router-dom';
-import { FiArrowLeft} from 'react-icons/fi';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import { Marker, Map, TileLayer } from 'react-leaflet';
 import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet';
@@ -11,15 +11,15 @@ import logo from '../../assets/logo.svg';
 import { Error } from './styles';
 
 interface Data {
-    name: string;
-    email: string;
-    whatsapp: string;
-    uf: string;
-    city: string;
-    latitude: number;
-    longitude:number;
-    items:number[];
-  }
+  name: string;
+  email: string;
+  whatsapp: string;
+  uf: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+  items: number[];
+}
 
 interface Item {
   id: number;
@@ -130,35 +130,33 @@ const CreatePoint: React.FC = () => {
       setSelectedItems([...selectedItems, id]);
     }
   }
-  function ValidateData(data: Data) : boolean{
+  function ValidateData(data: Data): boolean {
     if (!data.name) {
       setInputError('Digite o seu nome!');
-      return false
+      return false;
+    }
+    if (!data.email) {
+      setInputError('Digite o seu email');
+      return false;
+    }
+    if (!data.whatsapp) {
+      setInputError('Digite o seu whatsapp');
+      return false;
+    }
+    if (data.uf === '0') {
+      setInputError('Selecione seu estado');
+      return false;
+    }
+    if (data.city === '0') {
+      setInputError('Selecione sua cidade');
+      return false;
+    }
+    if (data.items.length === 0) {
+      setInputError('Selecione pelo menos um resíduo');
+      return false;
+    }
 
-    }
-     if(!data.email) {
-      setInputError( 'Digite o seu email');
-      return false
-    }
-    if(!data.whatsapp) {
-      setInputError( 'Digite o seu whatsapp');
-      return false
-    }
-    if(data.uf === '0') {
-      setInputError( 'Selecione seu estado');
-      return false
-    }
-    if(data.city === '0') {
-      setInputError( 'Selecione sua cidade');
-      return false
-    }
-    if(data.items.length === 0) {
-      setInputError( 'Selecione pelo menos um resíduo');
-      return false
-    }
-
-     return true
-
+    return true;
   }
 
   async function handleSubmit(event: FormEvent): Promise<void> {
@@ -178,17 +176,15 @@ const CreatePoint: React.FC = () => {
       city,
       latitude,
       longitude,
-      items:selectedItens,
+      items: selectedItens,
     };
 
-    if(ValidateData(data)){
+    if (ValidateData(data)) {
       setInputError('');
 
-    await api.post('points', data);
-    history.push("/create-point-success")
+      await api.post('points', data);
+      history.push('/create-point-success');
     }
-
-
   }
 
   return (
@@ -201,10 +197,8 @@ const CreatePoint: React.FC = () => {
           Voltar para home
         </Link>
       </header>
-      <form onSubmit={handleSubmit} >
-        <h1>
-          Cadastro do ponto de coleta
-        </h1>
+      <form onSubmit={handleSubmit}>
+        <h1>Cadastro do ponto de coleta</h1>
         {inputError && <Error>{inputError}</Error>}
         <fieldset>
           <legend>

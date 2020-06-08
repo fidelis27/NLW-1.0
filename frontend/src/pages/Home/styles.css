@@ -1,7 +1,7 @@
 #page-home {
   height: 100vh;
+  background: url('../../assets/home-background.svg') no-repeat 400px bottom;
 
-  background: url('../../assets/home-background.svg') no-repeat 600px bottom;
 }
 
 #page-home .content {
@@ -22,7 +22,7 @@
 
 #page-home .content main {
   flex: 1;
-  max-width: 560px;
+  max-width: 460px;
 
   display: flex;
   flex-direction: column;
@@ -30,13 +30,13 @@
 }
 
 #page-home .content main h1 {
-  font-size: 54px;
+  font-size: 44px;
   color: var(--title-color);
 }
 
 #page-home .content main p {
-  font-size: 24px;
-  margin-top: 24px;
+  font-size: 20px;
+  margin-top: 14px;
   line-height: 38px;
 }
 
@@ -82,8 +82,16 @@
 #page-home .content main a:hover {
   background: #2FB86E;
 }
+@media(max-width: 1100px) {
+#page-home{
 
+  background: url('../../assets/home-background.svg') no-repeat 250px bottom;
+ }
+
+ }
 @media(max-width: 900px) {
+
+
   #page-home .content {
     align-items: center;
     text-align: center;
