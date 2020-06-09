@@ -14,7 +14,7 @@ const Routes: React.FC = () => {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-      /* headerMode="none" */
+      headerMode="none"
 
 
       screenOptions={{

@@ -1,14 +1,104 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
-import { ImageBackground, View, Image, StyleSheet, Text } from 'react-native';
+import { ImageBackground, View, Image, StyleSheet, Text, Alert } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import RNPickerSelect from 'react-native-picker-select';
+import axios from 'axios';
+
+interface IBGEResponse {
+  sigla: string;
+}
+
+interface IBGECityResponse {
+  nome: string;
+}
+interface Items {
+  label: string;
+  value: string;
+}[]
 
 const Home: React.FC = () => {
-  const navigation = useNavigation ();
+  const [ufs, setUfs] = useState<string[]>([]);
+  const [cities, setCities] = useState<string[]>([]);
+  const [selectedUf, setSeletectedUf] = useState<string>('0');
+  const [selectedCity, setSeletectedCity] = useState<string>('0');
 
-  function handleNavigateToPoints(){
-    navigation.navigate('Points')
+  useEffect(() => {
+    axios
+      .get<IBGEResponse[]>(
+        'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome',
+      )
+      .then((res) => {
+        const ufInitials = res.data.map((uf) => uf.sigla);
+        setUfs(ufInitials);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (selectedUf === '0') {
+      return;
+    }
+    axios
+      .get<IBGECityResponse[]>(
+        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`,
+      )
+      .then((res) => {
+        const cityNames = res.data.map((city) => city.nome);
+
+        setCities(cityNames);
+      });
+  }, [selectedUf]);
+  const navigation = useNavigation();
+  const itensUfs = ufs.map(function (uf) {
+    return { label: uf, value: uf }
+  });
+
+  const DropdownUf = () => {
+    return (
+      <RNPickerSelect
+        placeholder={{
+          label: 'Selecione um estado...',
+          value: null,
+        }}
+        onValueChange={(uf) => setSeletectedUf(uf)}
+        value={selectedUf}
+        items={
+          itensUfs}
+      />
+    );
+  };
+
+
+  const itensCities = cities.map(function (city) {
+    return { label: city, value: city }
+  });
+  const DropdownCity = () => {
+    return (
+      <RNPickerSelect
+        placeholder={{
+          label: 'Selecione uma cidade...',
+          value: null,
+        }}
+        onValueChange={(city) => setSeletectedCity(city)}
+        value={selectedCity}
+        items={
+          itensCities}
+      />
+    );
+  };
+
+  function handleNavigateToPoints() {
+    if(selectedUf === '0' || selectedCity ==='0') {
+      Alert.alert("Antes de continuar selecione o estado e a cidade.");
+      return;
+    }
+    navigation.navigate('Points', {
+      uf:selectedUf,
+      city:selectedCity
+    })
+    setSeletectedCity('0');
+    setSeletectedUf('0');
   }
   return (
     <ImageBackground
@@ -22,12 +112,14 @@ const Home: React.FC = () => {
         <Text style={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente</Text>
       </View>
       <View style={styles.footer}>
+        <DropdownUf />
+        <DropdownCity />
         <RectButton style={styles.button}
           onPress={handleNavigateToPoints}>
           <View style={styles.buttonIcon}>
             <Text>
-              <Icon name="arrow-right" color="#fff" size={26}/>
-              </Text>
+              <Icon name="arrow-right" color="#fff" size={26} />
+            </Text>
           </View>
           <Text style={styles.buttonText}>Entrar</Text>
         </RectButton>
@@ -65,7 +157,11 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
 
-  footer: {},
+  footer: {
+
+    justifyContent: 'center',
+  },
+
 
   select: {},
 
