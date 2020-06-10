@@ -9,6 +9,7 @@ import './styles.css';
 
 import logo from '../../assets/logo.svg';
 import { Error } from './styles';
+import Dropzone from '../../components/Dropzone';
 
 interface Data {
   name: string;
@@ -33,11 +34,14 @@ interface IBGECityResponse {
   nome: string;
 }
 
+
+
 const CreatePoint: React.FC = () => {
-  const [inputError, setInputError] = useState<string>('');
+
   const [itens, setItens] = useState<Item[]>([]);
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
+  const [selectedFile, setSelectedFile] = useState<File>();
 
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
     0,
@@ -130,34 +134,6 @@ const CreatePoint: React.FC = () => {
       setSelectedItems([...selectedItems, id]);
     }
   }
-  function ValidateData(data: Data): boolean {
-    if (!data.name) {
-      setInputError('Digite o seu nome!');
-      return false;
-    }
-    if (!data.email) {
-      setInputError('Digite o seu email');
-      return false;
-    }
-    if (!data.whatsapp) {
-      setInputError('Digite o seu whatsapp');
-      return false;
-    }
-    if (data.uf === '0') {
-      setInputError('Selecione seu estado');
-      return false;
-    }
-    if (data.city === '0') {
-      setInputError('Selecione sua cidade');
-      return false;
-    }
-    if (data.items.length === 0) {
-      setInputError('Selecione pelo menos um resíduo');
-      return false;
-    }
-
-    return true;
-  }
 
   async function handleSubmit(event: FormEvent): Promise<void> {
     event.preventDefault();
@@ -168,23 +144,27 @@ const CreatePoint: React.FC = () => {
     const [latitude, longitude] = selectedPosition;
     const selectedItens = selectedItems;
 
-    const data = {
-      name,
-      email,
-      whatsapp,
-      uf,
-      city,
-      latitude,
-      longitude,
-      items: selectedItens,
-    };
+    const data = new FormData();
 
-    if (ValidateData(data)) {
-      setInputError('');
+
+      data.append('name',name);
+      data.append('email',email)
+      data.append('whatsapp', whatsapp)
+      data.append('uf', uf)
+      data.append('city', city)
+      data.append('latitude', String(latitude));
+      data.append('longitude', String(longitude));
+      data.append('items', selectedItens.join(','));
+
+      if (selectedFile) {
+        data.append('image', selectedFile)
+      }
+
+
 
       await api.post('points', data);
       history.push('/create-point-success');
-    }
+
   }
 
   return (
@@ -199,7 +179,9 @@ const CreatePoint: React.FC = () => {
       </header>
       <form onSubmit={handleSubmit}>
         <h1>Cadastro do ponto de coleta</h1>
-        {inputError && <Error>{inputError}</Error>}
+
+        <Dropzone onFileUploaded={setSelectedFile}/>
+
         <fieldset>
           <legend>
             <h2>Dados</h2>
