@@ -8,7 +8,6 @@ import api from '../../services/api';
 import './styles.css';
 
 import logo from '../../assets/logo.svg';
-import { Error } from './styles';
 import Dropzone from '../../components/Dropzone';
 
 interface Data {
@@ -34,10 +33,7 @@ interface IBGECityResponse {
   nome: string;
 }
 
-
-
 const CreatePoint: React.FC = () => {
-
   const [itens, setItens] = useState<Item[]>([]);
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
@@ -116,7 +112,6 @@ const CreatePoint: React.FC = () => {
 
   function handleMapClick(event: LeafletMouseEvent): void {
     setSelectedPosition([event.latlng.lat, event.latlng.lng]);
-    return;
   }
   function handleInputChange(event: ChangeEvent<HTMLInputElement>): void {
     const { name, value } = event.target;
@@ -146,25 +141,21 @@ const CreatePoint: React.FC = () => {
 
     const data = new FormData();
 
+    data.append('name', name);
+    data.append('email', email);
+    data.append('whatsapp', whatsapp);
+    data.append('uf', uf);
+    data.append('city', city);
+    data.append('latitude', String(latitude));
+    data.append('longitude', String(longitude));
+    data.append('items', selectedItens.join(','));
 
-      data.append('name',name);
-      data.append('email',email)
-      data.append('whatsapp', whatsapp)
-      data.append('uf', uf)
-      data.append('city', city)
-      data.append('latitude', String(latitude));
-      data.append('longitude', String(longitude));
-      data.append('items', selectedItens.join(','));
+    if (selectedFile) {
+      data.append('image', selectedFile);
+    }
 
-      if (selectedFile) {
-        data.append('image', selectedFile)
-      }
-
-
-
-      await api.post('points', data);
-      history.push('/create-point-success');
-
+    await api.post('points', data);
+    history.push('/create-point-success');
   }
 
   return (
@@ -172,15 +163,15 @@ const CreatePoint: React.FC = () => {
       <header>
         <img src={logo} alt="" />
 
-        <Link to="/">
+        <Link to="/dashboard">
           <FiArrowLeft />
-          Voltar para home
+          Voltar para Dashboard
         </Link>
       </header>
       <form onSubmit={handleSubmit}>
         <h1>Cadastro do ponto de coleta</h1>
 
-        <Dropzone onFileUploaded={setSelectedFile}/>
+        <Dropzone onFileUploaded={setSelectedFile} />
 
         <fieldset>
           <legend>
@@ -284,8 +275,9 @@ const CreatePoint: React.FC = () => {
             ))}
           </ul>
         </fieldset>
-
-        <button type="submit">Cadastrar ponto de coleta</button>
+        <div className="buttons">
+          <button type="submit">Cadastrar ponto de coleta</button>
+        </div>
       </form>
     </div>
   );

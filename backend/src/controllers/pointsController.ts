@@ -17,14 +17,14 @@ export default {
       .distinct()
       .select('points.*');
 
-      const serializedItems = points.map(point => {
+      const serializedPoints = points.map(point => {
         return {
           ...point,
-          image_url: `http://192.168.0.104:3333/uploads/${point.image}`,
+          image_url: `http://192.168.0.104:3333/temp/${point.image}`,
         };
       });
 
-    return res.json(serializedItems);
+    return res.json(serializedPoints);
   },
   async create(req: Request, res: Response) {
     const {
@@ -89,7 +89,7 @@ export default {
 
       const serializedPoint =  {
           ...point,
-          image_url: `http://192.168.0.104:3333/uploads/${point.image}`,
+          image_url: `http://192.168.0.104:3333/temp/${point.image}`,
 
       };
 

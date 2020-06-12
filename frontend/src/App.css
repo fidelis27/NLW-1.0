@@ -2,6 +2,10 @@
   --primary-color: #34CB79;
   --title-color: #322153;
   --text-color: #6C6C80;
+  --bg-dark: #1A2F3A;
+  --shadow:
+        0 2px 23px 0 rgba(0, 0, 0, 0.1),
+        0 2px 49px 0 rgba(0, 0, 0, 0.06);
 }
 
 * {

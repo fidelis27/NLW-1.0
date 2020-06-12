@@ -93,6 +93,7 @@ const Home: React.FC = () => {
       Alert.alert("Antes de continuar selecione o estado e a cidade.");
       return;
     }
+
     navigation.navigate('Points', {
       uf:selectedUf,
       city:selectedCity

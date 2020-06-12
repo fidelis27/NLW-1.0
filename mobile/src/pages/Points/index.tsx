@@ -117,29 +117,28 @@ const Points: React.FC = () => {
                   latitudeDelta: 0.014,
                   longitudeDelta: 0.014,
                 }}>
-                  {
-                  points.map(point => (
-                    <Marker key={String(point.id)}  onPress={() => handleNavigateToDetail(point.id)}
-                      style={styles.mapMarker} coordinate={{
+                  {points.map(point => (
+                    <Marker key={String(point.id)}
+                      onPress={() => handleNavigateToDetail(point.id)}
+                      style={styles.mapMarker}
+                      coordinate={{
                         latitude: point.latitude,
                         longitude: point.longitude,
-                      }}>
+                      }}
+                      >
                       <View style={styles.mapMarkerContainer} >
-                        <Image style={styles.mapMarkerImage} source={{uri:point.image_url}} />
+                        <Image style={styles.mapMarkerImage} source={{ uri:point.image_url}} />
                        <Text style={styles.mapMarkerTitle}>{point.name}</Text>
                       </View>
                     </Marker>
-                  ))
-                  }
-
+                  ))}
               </MapView>
-            )
-          }
+            ) }
         </View>
       </View>
 
       <View style={styles.itemsContainer}>
-        <ScrollView
+      <ScrollView
           horizontal showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ paddingHorizontal: 20 }}>
           {items.map(item => (
@@ -150,7 +149,7 @@ const Points: React.FC = () => {
               onPress={() => handleSelectedItem(item.id)}
               key={String(item.id)}
               activeOpacity={0.6}>
-              <SvgUri width={42} height={42} uri={item.image_url} />
+              <SvgUri width={42} height={42} uri={item.image_url} ></SvgUri>
               <Text style={styles.itemTitle}>{item.title}</Text>
             </TouchableOpacity>
           ))}

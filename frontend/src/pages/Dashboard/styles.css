@@ -1,0 +1,214 @@
+#dashboard .container {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-areas:
+  "h h"
+  "a m"
+  "f f";
+}
+
+#dashboard .container header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  grid-area: h;
+  box-shadow: var(--shadow);
+}
+
+#dashboard .container main{
+
+  grid-area: m;
+  opacity: 0.9;
+  }
+
+#dashboard .container main .leaflet-container {
+  width: 100%;
+  height: 350px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+main .leaflet-container .point-info {
+
+  border-radius: 8px;
+
+}
+
+main .leaflet-container .pont-name {
+  font-size: 12px;
+}
+
+#dashboard .container  main .group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+#dashboard .container  main .itensContainer {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+
+}
+
+main .itens {
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f5;
+
+    border-color: #FFF;
+    outline: none;
+    border: none;
+    margin:4px;
+
+
+    height: 95px;
+    width: 95px;
+    border-radius: 8px;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+
+
+    text-align: center;
+  }
+
+main .itens:hover {
+  background: #E1FAEC;
+  border: 2px solid #34CB79;
+}
+
+
+main .itens img {
+  height: 40px;
+  width: 40px;
+}
+
+main .itens .item-title {
+  font-weight: bold;
+}
+
+
+#dashboard .container main .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#dashboard .container main .button a {
+  width: 100%;
+  max-width: 260px;
+  height: 72px;
+  background: var(--primary-color);
+  border-radius: 8px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+#dashboard main .button a span {
+  display: block;
+  background: rgba(0, 0, 0, 0.08);
+  width: 32px;
+  height:72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  font-weight: 400;
+}
+
+#dashboard .container  main .button a span svg {
+  color: #FFF;
+  width: 20px;
+  height: 20px;
+}
+
+#dashboard .container  main .button a strong {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+  color: #FFF;
+}
+
+#dashboard .container  main .button a:hover {
+  background: #2FB86E;
+}
+
+
+#dashboard .container aside {
+  background: black;
+  grid-area: a;
+
+}
+
+#dashboard .container aside {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+
+}
+
+#dashboard .container aside strong {
+  color: #FFF;
+  padding-bottom: 20px;
+}
+
+
+
+#dashboard .container aside .field-group {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  margin: 10px;
+
+}
+
+#dashboard .container aside .field-group .field {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+
+#dashboard .container aside .field-group .field label {
+  color: #FFF;
+  font-size: 20px;
+}
+
+#dashboard .container aside .field-group .field select{
+  background: var(--primary-color);
+  border-radius: 8px;
+  padding:16px;
+  color: #FFF;
+  width: auto;
+  font-size: 16px;
+}
+
+
+
+#dashboard .container footer {
+  background: black;
+  grid-area: f;
+}
+
+footer .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  margin-top: 20px;
+}
+
+footer .footer svg {
+  color: red;
+}
