@@ -21,14 +21,14 @@ Como forma de apreendizado fiz a validação dos campos do formulário e também
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Sobre
-Esse projeto foi criado na seman NLW(NEXT LEVEL WEEK) da Rockeseat, conteúdo gratuito.
+Esse projeto foi criado na semana NLW(NEXT LEVEL WEEK) da Rockeseat como conteúdo gratuito.
 
 ### O projeto ECOLETA
 O projeto inicial tinha apenas a tela inicial e o formulário de cadastro, como forma de apreendizado resolvi criar o dashboard e a tela de informação do ponto de coleta cadastrado, funcionalidade que estavam apenas disponíves no app mobile.
 
 ### Tecnologias usadas
 ## Front-end
-    react (bibliotec utilizada para desenvolvimento)
+    react (biblioteca utilizada para desenvolvimento)
     react-dropzone (upload de images)
     react-icons (icones)
     react-leaflet (mapas)

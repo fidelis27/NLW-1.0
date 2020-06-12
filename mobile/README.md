@@ -13,7 +13,7 @@
 
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Expo react-native](https://docs.expo.io/).
 
 ## Sobre
 Esse projeto foi criado na semana NLW(NEXT LEVEL WEEK) da Rockeseat, conteúdo gratuito.
