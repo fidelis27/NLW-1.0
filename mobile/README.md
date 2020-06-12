@@ -2,12 +2,15 @@
 
 # Telas da aplicação web
 ## Tela inicial.
-![tela inicial](https://user-images.githubusercontent.com/45233696/84513610-12e58d00-aca0-11ea-99c3-47d454f88cb1.png)
+![IMG_20200612_121115](https://user-images.githubusercontent.com/45233696/84517936-52af7300-aca6-11ea-84b4-cf034dbe6e5a.jpg)
 
 ## Tela do Dashboard
+![IMG_20200612_121210](https://user-images.githubusercontent.com/45233696/84517933-5216dc80-aca6-11ea-913d-6829e4647830.jpg)
 
 
 ## Tela de infomação do ponto de coleta
+![IMG_20200612_121143](https://user-images.githubusercontent.com/45233696/84517937-53480980-aca6-11ea-9984-2f7190e08a61.jpg)
+
 
 
 
