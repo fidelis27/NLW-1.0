@@ -212,3 +212,120 @@ footer .footer {
 footer .footer svg {
   color: red;
 }
+
+
+
+@media(max-width: 768px) {
+  #dashboard .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10vh 20vh 60vh 10vh;
+  grid-template-areas:
+  "h h"
+  "a a"
+  "m m"
+  "f f";
+}
+
+#dashboard .container aside {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+#dashboard .container aside strong {
+  color: #FFF;
+  margin: 5px 15px;
+}
+
+#dashboard .container aside .field-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  height: 100%;
+}
+#dashboard .container aside .field-group .field {
+  padding: 5px;
+  margin: 0;
+
+}
+#dashboard .container aside .field-group .field select {
+  font-size: 16px;
+  margin: 0;
+  padding: 5px 10px;
+}
+#dashboard .container aside .field-group .field label {
+  font-size:14px;
+}
+
+#dashboard .container  main {
+  height: 40vh;
+}
+#dashboard .container main .leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+#dashboard .container main .group{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+#dashboard .container main .group .itensContainer {
+   display: flex;
+   height: 70px;
+   margin: 0 20px 5px;
+
+}
+
+#dashboard .container main .itens  {
+  height: 60px;
+}
+
+#dashboard .container main .itens img {
+  height: 40px;
+  border-radius: 4px;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+#dashboard .container  main .button a {
+  width: 100%;
+  max-width: 260px;
+  height: 32px;
+  background: var(--primary-color);
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 5px;
+
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+#dashboard main .button a span {
+  display: block;
+  background: rgba(0, 0, 0, 0.08);
+  width: 32px;
+  height:42px;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  font-weight: 400;
+}
+
+#dashboard .container  main .button a span svg {
+  color: #FFF;
+  height: 42px;
+
+
+}
+
+
+}
