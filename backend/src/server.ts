@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import cors from 'cors';
 import routes from './routes';
 import { errors } from 'celebrate';
+import 'dotenv';
 
 const app = express();
 

@@ -8,6 +8,7 @@ var path_1 = require("path");
 var cors_1 = __importDefault(require("cors"));
 var routes_1 = __importDefault(require("./routes"));
 var celebrate_1 = require("celebrate");
+require("dotenv");
 var app = express_1.default();
 app.use(cors_1.default());
 app.use(express_1.default.json());

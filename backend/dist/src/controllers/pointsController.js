@@ -72,7 +72,7 @@ exports.default = {
                     case 1:
                         points = _b.sent();
                         serializedPoints = points.map(function (point) {
-                            return __assign(__assign({}, point), { image_url: "http://192.168.0.104:3333/temp/" + point.image });
+                            return __assign(__assign({}, point), { image_url: "https://server-ecoleta-nodejs.herokuapp.com/temp/" + point.image });
                         });
                         return [2 /*return*/, res.json(serializedPoints)];
                 }
@@ -142,7 +142,7 @@ exports.default = {
                                 .select('items.title')];
                     case 2:
                         items = _a.sent();
-                        serializedPoint = __assign(__assign({}, point), { image_url: "http://192.168.0.104:3333/temp/" + point.image });
+                        serializedPoint = __assign(__assign({}, point), { image_url: "https://server-ecoleta-nodejs.herokuapp.com/temp/" + point.image });
                         return [2 /*return*/, res.json({
                                 point: serializedPoint,
                                 items: items,
