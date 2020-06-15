@@ -269,6 +269,7 @@ footer .footer svg {
 #dashboard .container main .group{
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: auto;
   padding: 0;
   margin: 0;
@@ -279,18 +280,18 @@ footer .footer svg {
   gap: 16px;
   list-style: none;
   padding:0;
-  margin:0
+  margin:20px 0 0;
 
 }
 
 #dashboard .container main .itens  {
-  height: 70px;
+  height: 90px;
   padding:0;
   margin:0;
 }
 
 #dashboard .container main .itens img {
-  height: 30px;
+  height: 70px;
   border-radius: 4px;
   text-decoration: none;
 
@@ -303,6 +304,7 @@ footer .footer svg {
 {
   font-size: 10px;
 }
+
 #dashboard .container  main .button a {
   width: 100%;
   max-width: 260px;
@@ -310,7 +312,7 @@ footer .footer svg {
   background: var(--primary-color);
   border-radius: 8px;
   text-decoration: none;
-  margin-top: 5px;
+  margin-top: 20px;
 
 
 
