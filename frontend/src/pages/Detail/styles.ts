@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 export const Body = styled.div`
   display: flex;
   flex-direction: row;
@@ -14,6 +16,13 @@ export const Container = styled.section`
   background: #fff;
   border-radius: 4px;
   padding: 30px;
+
+  @media(max-width: 768px) {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+
+  }
 `;
 
 export const Button = styled.div`
@@ -39,6 +48,14 @@ export const Button = styled.div`
 export const Image = styled.div`
   width: 50vw;
   height: 100vh;
+
+  @media(max-width: 768px) {
+  display: none;
+  }
+
+
+
+
   img {
     background-color: black;
     background-size: contain;
@@ -52,6 +69,8 @@ export const Header = styled.header`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+
 
   img {
     width: 100%;
@@ -109,13 +128,18 @@ export const ItensGrid = styled.ul`
   display: flex;
   justify-content: center;
   list-style: none;
+  margin:5px;
+  height:100%;
 
   li {
-    height: 52px;
+    display:flex;
+    flex-direction:column;
+    height: 82px;
     width: 52px;
     margin: 5px 20px;
+
     img {
-      width: 100%;
+      height: 52px;
     }
     span {
       font-size: 12px;
