@@ -20,7 +20,7 @@ export default {
       const serializedPoints = points.map(point => {
         return {
           ...point,
-          image_url: `http://192.168.0.104:3333/temp/${point.image}`,
+          image_url: `https://server-ecoleta-nodejs.herokuapp.com/temp/${point.image}`,
         };
       });
 
@@ -89,7 +89,7 @@ export default {
 
       const serializedPoint =  {
           ...point,
-          image_url: `http://192.168.0.104:3333/temp/${point.image}`,
+          image_url: `https://server-ecoleta-nodejs.herokuapp.com/temp/${point.image}`,
 
       };
 
