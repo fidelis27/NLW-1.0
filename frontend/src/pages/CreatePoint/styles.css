@@ -201,3 +201,19 @@
   background: #E1FAEC;
   border: 2px solid #34CB79;
 }
+
+@media(max-width: 768px) {
+  #page-create-point header {
+    margin: 15px 10px 10px;
+  }
+  #page-create-point form .field-group {
+
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  #page-create-point form .field-group .field + .field {
+    margin-left: 0;
+  }
+}
