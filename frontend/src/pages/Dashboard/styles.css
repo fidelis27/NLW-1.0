@@ -55,7 +55,7 @@ main .leaflet-container .pont-name {
 
 }
 
-main .itens {
+#dashboard .container main .itens {
     display: flex;
     flex-direction: column;
     background: #f5f5f5;
@@ -269,29 +269,39 @@ footer .footer svg {
 #dashboard .container main .group{
   display: flex;
   flex-direction: column;
+  height: auto;
   padding: 0;
   margin: 0;
 }
 #dashboard .container main .group .itensContainer {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   list-style: none;
+  padding:0;
+  margin:0
 
 }
 
 #dashboard .container main .itens  {
-  height: 60px;
+  height: 80px;
+  padding:0;
+  margin:0;
 }
 
 #dashboard .container main .itens img {
-  height: 50px;
+  height: 30px;
   border-radius: 4px;
   text-decoration: none;
 
   display: flex;
   align-items: center;
   overflow: hidden;
+}
+
+#dashboard .container main .itens
+{
+  font-size: 14px;
 }
 #dashboard .container  main .button a {
   width: 100%;
