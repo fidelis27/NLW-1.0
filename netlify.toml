@@ -1,4 +1,4 @@
 [build]
   command = "yarn start build"
   publish="frontend/build"
-  base = "NLW1-1.0"
+  base = "NLW-1.0"
