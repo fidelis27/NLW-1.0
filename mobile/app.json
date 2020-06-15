@@ -1,12 +1,16 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Ecoleta",
+    "slug": "Ecoleta",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
+    "description":"Ecoleta is a project developed based on international environment week. That aims to connect people to companies that collect specific waste such as light bulbs, batteries, cooking oil, etc.",
+    "privacy":"public",
+    "primaryColor":"#34CB79",
+    "githubUrl":"https://github.com/fidelis27/NLW-1.0",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,5 +28,6 @@
     "ios": {
       "supportsTablet": true
     }
+
   }
 }
