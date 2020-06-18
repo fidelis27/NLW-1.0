@@ -5,7 +5,19 @@ import { Marker, Map, TileLayer } from 'react-leaflet';
 import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet';
 import api from '../../services/api';
-import './styles.css';
+
+// Todo css foi definido atraves do styled-component
+/* import './styles.css'; */
+
+import {
+  PageCreatePoint,
+  Field,
+  FieldGroup,
+  Form,
+  ItensGrid,
+  LeafletContainer,
+  Header,
+} from './styles';
 
 import logo from '../../assets/logo.svg';
 import Dropzone from '../../components/Dropzone';
@@ -159,16 +171,16 @@ const CreatePoint: React.FC = () => {
   }
 
   return (
-    <div id="page-create-point">
-      <header>
+    <PageCreatePoint id="page-create-point">
+      <Header>
         <img src={logo} alt="" />
 
         <Link to="/dashboard">
           <FiArrowLeft />
           Voltar para Dashboard
         </Link>
-      </header>
-      <form onSubmit={handleSubmit}>
+      </Header>
+      <Form onSubmit={handleSubmit}>
         <h1>Cadastro do ponto de coleta</h1>
 
         <Dropzone onFileUploaded={setSelectedFile} />
@@ -177,7 +189,7 @@ const CreatePoint: React.FC = () => {
           <legend>
             <h2>Dados</h2>
           </legend>
-          <div className="field">
+          <Field className="field">
             <label htmlFor="name">Nome da entidade</label>
             <input
               type="text"
@@ -185,10 +197,10 @@ const CreatePoint: React.FC = () => {
               id="name"
               onChange={handleInputChange}
             />
-          </div>
+          </Field>
 
-          <div className="field-group">
-            <div className="field">
+          <FieldGroup className="field-group">
+            <Field className="field">
               <label htmlFor="email">E-mail</label>
               <input
                 type="text"
@@ -196,8 +208,8 @@ const CreatePoint: React.FC = () => {
                 id="email"
                 onChange={handleInputChange}
               />
-            </div>
-            <div className="field">
+            </Field>
+            <Field className="field">
               <label htmlFor="whatsapp">Whatsapp</label>
               <input
                 type="text"
@@ -205,8 +217,8 @@ const CreatePoint: React.FC = () => {
                 id="whatsapp"
                 onChange={handleInputChange}
               />
-            </div>
-          </div>
+            </Field>
+          </FieldGroup>
         </fieldset>
 
         <fieldset>
@@ -214,15 +226,17 @@ const CreatePoint: React.FC = () => {
             <h2>Endereço</h2>
             <span>Selecione o endereço no mapa</span>
           </legend>
-          <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={selectedPosition} />
-          </Map>
-          <div className="field-group">
-            <div className="field">
+          <LeafletContainer>
+            <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
+              <TileLayer
+                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={selectedPosition} />
+            </Map>
+          </LeafletContainer>
+          <FieldGroup className="field-group">
+            <Field className="field">
               <label htmlFor="uf">Estado (UF)</label>
               <select
                 name="uf"
@@ -237,8 +251,8 @@ const CreatePoint: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </div>
-            <div className="field">
+            </Field>
+            <Field className="field">
               <label htmlFor="city">Cidade</label>
               <select
                 name="city"
@@ -253,8 +267,8 @@ const CreatePoint: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </div>
-          </div>
+            </Field>
+          </FieldGroup>
         </fieldset>
 
         <fieldset>
@@ -262,7 +276,7 @@ const CreatePoint: React.FC = () => {
             <h2>Ítens de coleta</h2>
             <span>Selecione um ou mais ítens abaixo</span>
           </legend>
-          <ul className="items-grid">
+          <ItensGrid className="items-grid">
             {itens.map((item) => (
               <li
                 key={item.id}
@@ -273,13 +287,13 @@ const CreatePoint: React.FC = () => {
                 <span>{item.title}</span>
               </li>
             ))}
-          </ul>
+          </ItensGrid>
         </fieldset>
         <div className="buttons">
           <button type="submit">Cadastrar ponto de coleta</button>
         </div>
-      </form>
-    </div>
+      </Form>
+    </PageCreatePoint>
   );
 };
 

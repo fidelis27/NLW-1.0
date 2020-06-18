@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
+// Todo css foi definido atraves do styled-component
 import {
   Header,
   Container,

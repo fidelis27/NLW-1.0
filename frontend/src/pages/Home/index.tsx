@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
-import './styles.css';
+
+// Todo css foi definido atraves do styled-component
+/* import './styles.css'; */
+import { PageHome } from './styles';
+
 import logo from '../../assets/logo.svg';
 
 const Home: React.FC = () => {
   return (
-    <div id="page-home">
+    <PageHome id="page-home">
       <div className="content">
         <header>
           <img src={logo} alt="Ecoleta" />
@@ -23,7 +27,7 @@ const Home: React.FC = () => {
           </Link>
         </main>
       </div>
-    </div>
+    </PageHome>
   );
 };
 

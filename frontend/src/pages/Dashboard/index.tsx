@@ -9,7 +9,19 @@ import { LeafletMouseEvent, icon } from 'leaflet';
 import api from '../../services/api';
 
 import logo from '../../assets/logo.svg';
-import './styles.css';
+
+// Todo css foi definido atraves do styled-component
+/* import './styles.css'; */
+
+import {
+  Aside,
+  Button,
+  Container,
+  Field,
+  FieldGroup,
+  Footer,
+  Main,
+} from './styles';
 
 interface IBGEResponse {
   sigla: string;
@@ -138,11 +150,11 @@ const Dashboard: React.FC = () => {
 
   return (
     <div id="dashboard">
-      <div className="container ">
+      <Container className="container ">
         <header>
           <img src={logo} alt="Ecoleta" />
         </header>
-        <main>
+        <Main>
           <Map center={initialPosition} zoom={15} onClick={handleMapClick}>
             <TileLayer
               attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -189,20 +201,20 @@ const Dashboard: React.FC = () => {
               ))}
             </div>
 
-            <div className="button">
+            <Button className="button">
               <Link to="/create-point">
                 <span>
                   <FiLogIn />
                 </span>
                 <strong>Cadastre um ponto de coleta</strong>
               </Link>
-            </div>
+            </Button>
           </div>
-        </main>
-        <aside>
+        </Main>
+        <Aside>
           <strong>Filtros:</strong>
-          <div className="field-group">
-            <div className="field">
+          <FieldGroup className="field-group">
+            <Field className="field">
               <label htmlFor="uf">Estado (UF)</label>
               <select
                 name="uf"
@@ -217,8 +229,8 @@ const Dashboard: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </div>
-            <div className="field">
+            </Field>
+            <Field className="field">
               <label htmlFor="uf">Cidade</label>
               <select
                 name="city"
@@ -233,10 +245,10 @@ const Dashboard: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </div>
-          </div>
-        </aside>
-        <footer>
+            </Field>
+          </FieldGroup>
+        </Aside>
+        <Footer>
           <div className="footer">
             <span>
               Desenvolvido com <FiHeart /> por
@@ -246,8 +258,8 @@ const Dashboard: React.FC = () => {
               </strong>
             </span>
           </div>
-        </footer>
-      </div>
+        </Footer>
+      </Container>
     </div>
   );
 };
