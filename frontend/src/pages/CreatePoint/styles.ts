@@ -120,6 +120,10 @@ export const Form = styled.form`
 
         cursor: pointer;
       }
+      .selected {
+        background: #e1faec;
+        border: 2px solid #34cb79;
+      }
     }
   }
 `;
@@ -192,7 +196,6 @@ export const ItensGrid = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  list-style: none;
 
   li {
     background: #f5f5f5;
