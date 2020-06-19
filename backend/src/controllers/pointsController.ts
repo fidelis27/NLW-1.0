@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import knex from '../database/connection';
+import 'dotenv/config';
 
 export default {
   async index(req: Request, res: Response) {
@@ -53,6 +54,7 @@ export default {
 
     const insertedIds = await trx('points').insert(point);
     const point_id = insertedIds[0];
+    console.log(point_id)
 
     const pointItems = items
     .split(',')
@@ -63,6 +65,7 @@ export default {
         point_id,
       };
     });
+    console.log(pointItems)
 
     await trx('points_items').insert(pointItems);
 
@@ -89,8 +92,7 @@ export default {
 
       const serializedPoint =  {
           ...point,
-          image_url: `http:localhost:3333
-          http:localhost:3333/temp/${point.image}`,
+          image_url: process.env.API_URL+`/temp/${point.image}`,
 
       };
 

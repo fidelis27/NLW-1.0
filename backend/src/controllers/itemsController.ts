@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import knex from '../database/connection';
+import 'dotenv/config';
 
 export default {
   async index(req: Request, res: Response) {
@@ -9,7 +10,7 @@ export default {
       return {
         id: item.id,
         title: item.title,
-        image_url: `http:localhost:3333/uploads/${item.image}`,
+        image_url: process.env.API_URL+`/uploads/${item.image}`,
       };
     });
 
@@ -33,7 +34,7 @@ export default {
         return {
           id: item.id,
           title: item.title,
-          image_url: `http:localhost:3333/uploads/${item.image}`,
+          image_url: process.env.API_URL+`uploads/${item.image}`,
         };
       });
 
