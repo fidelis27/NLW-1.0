@@ -10,3 +10,4 @@ lerna-debug.log*
 node_modules/
 temp/*
 .env
+.dist
