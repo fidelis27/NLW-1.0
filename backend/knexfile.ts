@@ -1,20 +1,18 @@
 import { resolve } from 'path';
 import 'dotenv/config';
 
-module.exports ={
-
-  developmentPostgres:{
+module.exports = {
+  developmentPostgres: {
     client: 'postgres',
-    protocol:'postgres',
+    protocol: 'postgres',
     connection: {
-    host : process.env.Host,
-    port:process.env.DB_Port,
-    user:process.env.User,
-    password : process.env.Password,
-    database : process.env.Database,
-    ssl: {rejectUnauthorized: false},
+      host: process.env.Host,
+      port: process.env.DB_Port,
+      user: process.env.User,
+      password: process.env.Password,
+      database: process.env.Database,
+      ssl: { rejectUnauthorized: false },
     },
-
 
     migrations: {
       tableName: 'migrations',
@@ -40,12 +38,8 @@ module.exports ={
       directory: resolve(__dirname, 'src', 'database', 'seeds'),
     },
     useNullAsDefault: true,
-
-    },
+  },
 };
-
-
-
 
 /* module.exports = {
   development: {

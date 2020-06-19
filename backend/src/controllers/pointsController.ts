@@ -18,12 +18,12 @@ export default {
       .distinct()
       .select('points.*');
 
-      const serializedPoints = points.map(point => {
-        return {
-          ...point,
-          image_url: `http:localhost:3333/temp/${point.image}`,
-        };
-      });
+    const serializedPoints = points.map(point => {
+      return {
+        ...point,
+        image_url: `http:localhost:3333/temp/${point.image}`,
+      };
+    });
 
     return res.json(serializedPoints);
   },
@@ -51,21 +51,26 @@ export default {
       city,
       uf,
     };
+    const IfExists = await trx('points').where({ email }).first();
+    if (IfExists) {
+      return res.status(400).json({ message: 'Inserted other email!' });
+    }
+    await trx('points').insert(point);
+    const pontoCreate = await trx('points').where({ email }).first();
 
-    const insertedIds = await trx('points').insert(point);
-    const point_id = insertedIds[0];
-    console.log(point_id)
+    const point_id = pontoCreate.id;
+    /*  const point_id = insertedIds[0]; */
+    console.log(point_id);
 
     const pointItems = items
-    .split(',')
-    .map((item: string)=> Number(item.trim()))
-    .map((item_id: number) => {
-      return {
-        item_id,
-        point_id,
-      };
-    });
-    console.log(pointItems)
+      .split(',')
+      .map((item: string) => Number(item.trim()))
+      .map((item_id: number) => {
+        return {
+          item_id,
+          point_id,
+        };
+      });
 
     await trx('points_items').insert(pointItems);
 
@@ -90,14 +95,13 @@ export default {
       .where('points_items.point_id', id)
       .select('items.title');
 
-      const serializedPoint =  {
-          ...point,
-          image_url: process.env.API_URL+`/temp/${point.image}`,
-
-      };
+    const serializedPoint = {
+      ...point,
+      image_url: `${process.env.API_URL}/temp/${point.image}`,
+    };
 
     return res.json({
-      point:serializedPoint,
+      point: serializedPoint,
       items,
     });
   },
