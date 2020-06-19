@@ -10,7 +10,7 @@ export default {
       return {
         id: item.id,
         title: item.title,
-        image_url: process.env.API_URL+`/uploads/${item.image}`,
+        image_url: `${process.env.API_URL}uploads/${item.image}`,
       };
     });
 
@@ -30,14 +30,14 @@ export default {
       .where('points_items.point_id', point_id)
       .select('items.*');
 
-      const serializedItems = items.map(item => {
-        return {
-          id: item.id,
-          title: item.title,
-          image_url: process.env.API_URL+`uploads/${item.image}`,
-        };
-      });
+    const serializedItems = items.map(item => {
+      return {
+        id: item.id,
+        title: item.title,
+        image_url: `${process.env.API_URL}uploads/${item.image}`,
+      };
+    });
 
     return res.json(serializedItems);
-  }
+  },
 };

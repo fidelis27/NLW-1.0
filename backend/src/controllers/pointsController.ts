@@ -21,7 +21,7 @@ export default {
     const serializedPoints = points.map(point => {
       return {
         ...point,
-        image_url: `http:localhost:3333/temp/${point.image}`,
+        image_url: `${process.env.API_URL}temp/${point.image}`,
       };
     });
 
@@ -97,7 +97,7 @@ export default {
 
     const serializedPoint = {
       ...point,
-      image_url: `${process.env.API_URL}/temp/${point.image}`,
+      image_url: `${process.env.API_URL}temp/${point.image}`,
     };
 
     return res.json({
