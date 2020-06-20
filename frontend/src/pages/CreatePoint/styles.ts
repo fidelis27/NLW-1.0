@@ -9,7 +9,6 @@ export const PageCreatePoint = styled.div`
 
 export const Header = styled.header`
   margin-top: 28px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
