@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(routes);
 
 app.use('/uploads', express.static(resolve(__dirname, '..', 'uploads')));
-app.use('/temp', express.static(resolve(__dirname, '..', 'temp')));
 
 app.use(errors());
 

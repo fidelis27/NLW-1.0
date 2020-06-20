@@ -11,7 +11,7 @@ exports.default = celebrate_1.celebrate({
         city: celebrate_1.Joi.string().required(),
         uf: celebrate_1.Joi.string().required().max(2),
         items: celebrate_1.Joi.string().required(),
-    })
+    }),
 }, {
-    abortEarly: false
+    abortEarly: false,
 });

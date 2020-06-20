@@ -4,15 +4,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var multer_1 = __importDefault(require("multer"));
-var path_1 = require("path");
-var crypto_1 = __importDefault(require("crypto"));
+/*  import { resolve } from 'path'; */
 exports.default = {
-    storage: multer_1.default.diskStorage({
-        destination: path_1.resolve(__dirname, '..', '..', 'temp'),
-        filename: function (req, file, callback) {
-            var hash = crypto_1.default.randomBytes(6).toString('hex');
-            var fileName = hash + "-" + file.originalname;
-            callback(null, fileName);
-        }
-    })
+    storage: multer_1.default.memoryStorage(),
 };
+// função que armazena imagem no diretório raiz da aplicação
+/* export default {
+  storage: multer.diskStorage({
+    destination: resolve(__dirname, '..', '..', 'temp'),
+    filename(req, file, callback) {
+      const hash = crypto.randomBytes(6).toString('hex');
+
+      const fileName = `${hash}-${file.originalname}`;
+      callback(null, fileName);
+    },
+  }),
+}; */

@@ -3,6 +3,7 @@ import express from 'express';
 import multer from 'multer';
 import itemsController from './controllers/itemsController';
 import pointsController from './controllers/pointsController';
+import FilesController from './controllers/FilesController';
 
 import multerConfig from './config/multer';
 import ValidatePoint from './ValidadePoint';
@@ -15,9 +16,13 @@ routes.get('/items/:point_id', itemsController.show);
 routes.get('/points/', pointsController.index);
 routes.get('/points/:id', pointsController.show);
 
-routes.post('/points',
- upload.single('image'),ValidatePoint,
- pointsController.create)
- ;
+routes.get('/image/:point_image', FilesController.index);
+
+routes.post(
+  '/points',
+  upload.single('image'),
+  ValidatePoint,
+  pointsController.create
+);
 
 export default routes;

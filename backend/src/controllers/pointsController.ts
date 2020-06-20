@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import crypto from 'crypto';
 import knex from '../database/connection';
 import 'dotenv/config';
 
@@ -21,7 +22,7 @@ export default {
     const serializedPoints = points.map(point => {
       return {
         ...point,
-        image_url: `${process.env.API_URL}temp/${point.image}`,
+        image_url: `${process.env.API_URL}image/${point.image}`,
       };
     });
 
@@ -40,9 +41,12 @@ export default {
     } = req.body;
 
     const trx = await knex.transaction();
+    const hash = crypto.randomBytes(6).toString('hex');
+
+    const fileName = `${hash}-${req.file.originalname}`;
 
     const point = {
-      image: req.file.filename,
+      image: fileName,
       name,
       email,
       whatsapp,
@@ -51,6 +55,7 @@ export default {
       city,
       uf,
     };
+
     const IfExists = await trx('points').where({ email }).first();
     if (IfExists) {
       return res.status(400).json({ message: 'Inserted other email!' });
@@ -60,7 +65,15 @@ export default {
 
     const point_id = pontoCreate.id;
     /*  const point_id = insertedIds[0]; */
-    console.log(point_id);
+
+    const file = {
+      type: req.file.mimetype,
+      name: fileName,
+      data: req.file.buffer,
+      point_id,
+    };
+
+    await trx('files').insert(file);
 
     const pointItems = items
       .split(',')
@@ -97,7 +110,7 @@ export default {
 
     const serializedPoint = {
       ...point,
-      image_url: `${process.env.API_URL}temp/${point.image}`,
+      image_url: `${process.env.API_URL}image/${point.image}`,
     };
 
     return res.json({

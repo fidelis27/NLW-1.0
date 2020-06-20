@@ -7,8 +7,8 @@ export async function up(knex: Knex): Promise<any> {
     table.string('name').notNullable();
     table.string('email').notNullable();
     table.string('whatsapp').notNullable();
-    table.decimal('latitude').notNullable();
-    table.decimal('longitude').notNullable();
+    table.decimal('latitude', 14, 10).notNullable();
+    table.decimal('longitude', 14, 10).notNullable();
     table.string('city').notNullable();
     table.string('uf', 2).notNullable();
   });
